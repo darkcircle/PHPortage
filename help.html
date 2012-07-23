@@ -1,0 +1,98 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>PHPortage :: The REST API of the fastest gentoo package search engine in the web</title>
+	</head>
+	<body>
+		<div align=center>
+			<table border=0>
+				<tr><td rowspan="4"> <img src="image/php.gif" border=0>  </td><td>&nbsp;</td></tr>
+				<tr><td valign=top>            <font size=7><b><i>ortage</i></b></font> </td></tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr><td>&nbsp;</td></tr>
+			</table>
+		</div>
+		<p align=center><i>The REST API of the fastest gentoo package search engine in the web</i></p>
+		<hr>
+		<h2>1. 개요</h2>
+		<p>&nbsp;&nbsp;(2012년 6월, 적어도 제가 알고 있는 범위 내에서) 전세계 웹 기반 젠투 패키지
+		검색 시스템 중에서 젠투 패키지를 가장 빨리 찾을 수 있는 검색엔진입니다. PHP로 만들었기 
+		때문에 PHP + Portage 단어를 합성하여 PHPortage라는 이름을 붙였습니다. 간단한 하이퍼텍스트
+		기반 검색엔진 그리고 xml과 json기반의 REST API를 통해 패키지 검색 결과를 얻어낼 수 있습니다. 
+		세부적인 조건 설정을 통해 젠투시스템에서 사용할 수 있는 패키지가 어떤 것이 있는지 원하는 
+		방식대로 검색 결과를 가져올 수 있습니다. 물론 검색결과에 대해 여러분이 원하시는 대로 
+		프로그램에 넣어서 스타일링을 할 수 있습니다.</p>
+		<h2>2. 지원 인터페이스</h2>
+		<p>json과 xml을 지원합니다. 두가지 파일 형식에 대한 정보는 위키 페이지를 참조하시기 바랍니다.</p>
+		<p><b>[사용방법]</b> : http://darkcircle.myhome.tv/phportage/phportage.(json|xml)?k=(검색단어)[&(인자 및 값들...)]*</p>
+		<h2>3. 지원 인자 및 값</h2>
+		<table border=1 cellpadding=2 cellspacing=2>
+			<tr><td align=center> <b>인자 이름</b> </td><td align=center> <b>사용 값</b>          </td><td align=center> <b>기본 값</b>          </td><td align=center> <b>설 명</b>                                                                                </td></tr>
+			<tr><td align=center> k     </td><td> 패키지 이름 <br>(영문,숫자,하이픈) </td><td> (없음)    </td><td> 검색할 패키지의 이름입니다                        </td></tr>
+			<tr><td align=center> limit </td><td> -1 이상의 정수<br>(0값 사용금지)           </td><td> -1(무제한) </td><td> 패키지가 너무 많이 출력될 경우<br>제한할 최대 출력 개수 입니다 </td></tr>
+			<tr><td align=center> similarity   </td><td>              similar | exact      </td><td>              exact(일치)            </td><td>              검색 키워드와 유사한 패키지를<br>검색할 것인지, 일치하는 패키지를<br> 검색할 것인지 정합니다                                   </td></tr>
+			<tr><td align=center> targetarch   </td><td>              대상 아키텍처 이름<br>(섹션 5 참고) </td><td>              (0 길이 문자열)           </td><td>              특정 아키텍처 시스템에서<br> 빌드 가능한 패키지를 검색할 때 <br>아키텍처 이름을 넣습니다.<br>아키텍처 이름목록은 5번 섹션을<br>참고하시기 바랍니다 </td></tr>
+			<tr><td align=center> latestonly </td><td> true | false </td><td>true</td><td>최신 버전만 보여줄지에 대한<br>여부입니다.</td></tr> 
+			<tr><td align=center> livebuild </td><td> true | false </td><td>false</td><td>저장소에서 개발버전 소스코드를<br>업스트림에서 받아서 설치하는 버전을<br>보여줄지에 대한 여부입니다</td></tr>
+			<tr><td align=center> showmasked </td><td> true | false</td><td>false</td><td>보안이나 결함 등의 이유로 저장소에서 <br>내려받는 것을 막는 경우가 있습니다.<br> 이런 패키지를 보여줄지에 대한 <br> 여부입니다. 기본적으로 보여주지 <br> 않는 것이 좋습니다</td></tr>
+
+		</table>
+		<h2>4. 결과물의 구조</h2>
+		<p>본 API에서 출력하는 결과물은 result라는 이름을 가진 노드를 루트로 두고 가장 처음에 code와 message를 
+		출력합니다. 특별한 오류가 발생하지 않는 이상 여기서 나타나는 code는 0을 출력합니다. packages 노드가
+		나타나기 전의 요소들 중 실제 검색 결과 수를 나타내는 actualnumofres 를 제외한 나머지 모든 노드들은
+		사용자 여러분이 어떤 값을 설정했는지 다시금 확인시켜주기 위한 노드들입니다. 검색한 패키지 노드들은
+		packages 아래에 있으며, 여기 나타난 pkg노드는 패키지 하나에 대한 정보의 집합입니다.</p>
+
+		<p>이러한 결과 구조는 xml, json 둘 다 동일합니다.</p>
+		<h2>5. 지원 아키텍처 이름</h2>
+		<ul type=circle>
+			<li> alpha </li>
+			<li> amd64 </li>
+			<li> amd64-fbsd </li>
+			<li> arm </li>
+			<li> hppa </li>
+			<li> ia64 </li>
+			<li> m68k </li>
+			<li> mips </li>
+			<li> ppc </li>
+			<li> ppc64 </li>
+			<li> s390 </li>
+			<li> sh </li>
+			<li> sparc </li>
+			<li> sparc-fbsd </li>
+			<li> x86 </li>
+			<li> x86-fbsd </li>
+			<li> ppc-aix </li>
+			<li> x86-freebsd </li>
+			<li> x64-freebsd </li>
+			<li> sparc64-freebsd </li>
+			<li> hppa-hpux </li>
+			<li> ia64-hpux </li>
+			<li> x86-interix </li>
+			<li> amd64-linux </li>
+			<li> arm-linux </li>
+			<li> ia64-linux </li>
+			<li> ppc64-linux </li>
+			<li> x86-linux </li>
+			<li> ppc-macos </li>
+			<li> x86-macos </li>
+			<li> x64-macos </li>
+			<li> m68k-mint </li>
+			<li> x86-netbsd </li>
+			<li> ppc-openbsd </li>
+			<li> x86-openbsd </li>
+			<li> x64-openbsd </li>
+			<li> sparc-solaris </li>
+			<li> sparc64-solaris </li>
+			<li> x64-solaris </li>
+			<li> x86-solaris </li>
+			<li> x86-winnt </li>
+			<li> x86-cygwin </li>
+		</ul>
+		<h2>6. 디스(diss) 하기</h2>
+		<p>건설적인 디스는 언제나 환영합니다. darkcircle dot 0426 at gmail dot com</p>
+		<hr>
+		<p align=right><i>Copyright &copy; 2012 by Darkcircle</i></p>
+	</body>
+</html>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="result">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="code" minOccurs="1" maxOccurs="1" type="xs:integer"/>
+				<xs:element name="msg" minOccurs="1" maxOccurs="1" type="xs:string"/>
+				<xs:element name="keyword" minOccurs="0" maxOccurs="1" type="xs:string"/>
+				<xs:element name="limitnumofres" minOccurs="0" maxOccurs="1" type="limit"/>
+				<xs:element name="actualnumofres" minOccurs="0" maxOccurs="1" type="xs:integer"/>
+				<xs:element name="keyword_similarity" minOccurs="0" maxOccurs="1" type="ksim"/>
+				<xs:element name="targetarch" minOccurs="0" maxOccurs="1" type="xs:string"/>
+				<xs:element name="latestversiononly" minOccurs="0" maxOccurs="1" type="strbool" />
+				<xs:element name="livebuild" minOccurs="0" maxOccurs="1" type="strbool" />
+				<xs:element name="maskedpakcage" minOccurs="0" maxOccurs="1" type="strbool" />
+				<xs:element name="packages" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="pkg" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="category" minOccurs="1" maxOccurs="1" type="category"/>
+										<xs:element name="name" minOccurs="1" maxOccurs="1" type="xs:string"/>
+										<xs:element name="version" minOccurs="1" maxOccurs="1" type="xs:string"/>
+										<xs:element name="description" minOccurs="1" maxOccurs="1" type="xs:string"/>
+										<xs:element name="homepage" minOccurs="1" maxOccurs="1" type="URL"/>
+										<xs:element name="license" minOccurs="1" maxOccurs="1" type="xs:string"/>
+										<xs:element name="arch">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="archelement" minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:attribute name="name" type="xs:string"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="masked" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:attribute name="value" type="strbool"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:simpleType name="limit">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(infinity)|[0-9]{1,5}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="ksim">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(exact)|(similar)"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="strbool">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(true)|(false)"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="category">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([a-z1-9]{3,5}\-[a-z1-9]{2,})|(virtual)"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="URL">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(https?|ftp|file|gopher)\:\/\/\/?[a-zA-Z0-9\-]+(\.[a-zA-Z0-9\_]+)*(\/[\S]+)*\/?"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

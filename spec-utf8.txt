@@ -1,0 +1,21 @@
+Filesystem related extensions (implemented)
+ - filesystem
+ - directories
+ * 기본적으로 ebuild를 검색하고 뜯어보는데 필요한 라이브러리
+ * cron에 등록.
+
+Vendor specific database extensions 
+  - sqlite 3 (보안 따위 개한테 준다.)
+ * cron을 통해 emrege --sync후 정기적인 패키지 정보 수집
+  (It takes several minutes)
+
+Text processing (implemented) 
+  - Posix regex (포직스 호환. 이정도만이라도 하면 되지 뭘.)
+
+under two categories are needed for giving RESTful service
+
+Other basic extensions
+ - JSON 
+
+XML Manipulation
+ -*

@@ -1,0 +1,13 @@
+<?php
+	include ( "Include.inc" );
+	header ("Content-Type:text/xml");
+
+	$check = new String();
+	
+	$xml = new PHPortageXML ( $LOCAL_DBNAME );
+	$check->setStr($xml->initHttpGetVars($_GET));
+	if ( $check->compareTo( "" ) == 0 )
+		print( $xml->execute() );
+	else
+		print( $check->toString() );
+?>

@@ -1,0 +1,13 @@
+<?php
+	include("Include.inc");
+	header("Content-Type:text/json");
+	
+	$check = new String();
+
+	$json = new PHPortageJSON ( $LOCAL_DBNAME );
+	$check->setStr($json->initHttpGetVars($_GET));
+	if ( $check->compareTo( "" ) == 0 )
+		print($json->execute());
+	else
+		print($check->toString());
+?>
