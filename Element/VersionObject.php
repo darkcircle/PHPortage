@@ -13,7 +13,7 @@ class VersionObject
 	var $sufrev; // if some enumerable number 
 	var $pkgrelease; // integer (must be integer.)
 	
-	public function __construct( $new_version = null )
+	public function __construct( $new_version = "" )
 	{
 		if ( is_string($new_version) )
 			$v = new String($new_version);
