@@ -6,7 +6,7 @@
 	 */
 	include ( "Include.inc" );
 	
-	$fetch = new PortageTreeFetcher($PARENT_DIR, $TEMP_DBNAME);
+	$fetch = new PortageTreeFetcher($PARENT_DIR, $TEMP_DBNAME, $LOCAL_DBNAME);
 	$fetch->fetchPortage();
 	
 ?>
