@@ -290,7 +290,7 @@ class PortageTreeFetcher
 			
 			$ok = $result->finalize();
 			if ( !$ok )
-				throw new SQLException( "(nothing. finalize.)");
+				throw new SQLException("(we cannot finalize.)");
 
 			// print "done."
 			for ( $i = 0 ; $i < $pre_percentage_length ; $i++ )
@@ -305,8 +305,8 @@ class PortageTreeFetcher
 		else
 			throw new ModuleNotLoadedException("sqlite or sqlite3");
 		
-		list ( $eusec, $esec ) = explode( " ",microtime());
-		$etime = ($eusec + $esec);
+		list ( $eusec, $esec ) = explode( " ",microtime() );
+		$etime = ( $eusec + $esec );
 		
 		print("     - Elapsed processing time : ".$this->getElapsedTimeString($stime, $etime)."\n\n");
 		
