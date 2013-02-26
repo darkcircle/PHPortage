@@ -1,7 +1,7 @@
 <?php
 $PARENT_DIR="/usr/portage";
 
-// Please fill value for this variable
+// Please fill value up for a location of this package
 $PHPORTAGE_PATH="";
 
 $TEMP_DBNAME=$PHPORTAGE_PATH."/DB/portagetree.sqlite";
