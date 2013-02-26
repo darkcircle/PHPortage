@@ -236,7 +236,7 @@ class SearchAgent
 			} 
 		}
 		
-		print($doc->saveXML()."\n");
+		$result->setStr ( $doc->saveXML()."\n" );
 		
 		
 		return $result;
@@ -357,7 +357,7 @@ class SearchAgent
 				throw new FileNotFoundException($this->getDBFilename());
 			
 			// fetch result to array
-			while ( $arr = sqlite_fetch_array($this->db, $query_string->toString()) )
+			while ( $a = sqlite_fetch_array($this->db, $query_string->toString()) )
 			{
 				$t = array();
 				$arch = new ArchObject();
@@ -379,7 +379,7 @@ class SearchAgent
 		{
 			// open database
 			$this->db = new SQLite3($this->getDBFilename());
-			if ( !$this-> db )
+			if ( !$this->db )
 				throw new FileNotFoundException($this->getDBFilename());
 			
 			// fetch result to array
