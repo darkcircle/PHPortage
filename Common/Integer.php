@@ -19,10 +19,14 @@ class Integer
 			$this->int = $int_val;
 		else if ( is_bool($int_val) )
 			$this->int = (int)$int_val;
+		else if ( is_string ($int_val) )
+			$this->int = $this->parseVal($int_val);
 		else if ( TypeUtils::isIntegerObject($int_val) )
 			$this->setVal($int_val->longValue());
 		else if ( TypeUtils::isBooleanObject($int_val) )
 			$this->setVal($int_val->intVal());
+		else if ( TypeUtils::isStringObject($int_val) )
+			$this->int = $this->parseVal($int_val);
 		else
 			throw new UnsupportedTypeException($int_val);
 	}
@@ -113,6 +117,32 @@ class Integer
 			$val = $anotherInteger->longVal();
 		
 		return ($this->int == $val);
+	}
+
+	public function parseVal ( $givenVal )
+	{
+		$str = new String ( );
+		if ( is_string ( $givenVal ) )
+			$str->setStr ( $givenVal );
+		else if ( TypeUtils::isStringObject ( $givenVal ) )
+			$str->setStr ( $givenVal->toString() );
+		else 
+			throw new UnsupportedTypeException ( $givenVal );
+
+		$num = intval ( $str->toString() );
+
+		if ( $num == 0 && $str->strcmp("0") == 0 )
+			return 0;
+		else if ( $num != 0 && $str->strcmp("0") != 0 )
+			return $num;
+		else
+			throw new UnsupportedTypeException ( $givenVal );
+
+	}
+
+	public function toString()
+	{
+		return $this->__toString();
 	}
 	
 	public function __toString()

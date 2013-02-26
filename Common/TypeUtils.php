@@ -1,5 +1,4 @@
 <?php
-
 class TypeUtils 
 {
 	public static function isStringObject ( $strobj )
@@ -14,17 +13,17 @@ class TypeUtils
 	{
 		return ( is_object($boolobj) && strcmp ( get_class($boolobj), "Boolean") == 0 );
 	}
-	public static function isLicenseObject( $licobj )
-	{
-		return ( is_object($licobj) && strcmp ( get_class($licobj), "LicenseObject") == 0 );
-	}
-	public static function isArchObject ( $archobj )
-	{
-		return ( is_object($archobj) && strcmp ( get_class($archobj), "ArchObject" ) == 0 );
-	}
 	public static function isVersionObject ( $verobj )
 	{
 		return ( is_object($verobj) && strcmp ( get_class($verobj), "VersionObject") == 0 );
+	}
+	public static function isDateObject ( $dateobj )
+	{
+		return ( is_object($dateobj) && strcmp ( get_class($dateobj), "DateObject") == 0 );
+	}
+	public static function isArrayList ( $arraylistobj )
+	{
+		return ( is_object($arraylistobj) && strcmp ( get_class($arraylistobj), "ArrayList" ) == 0 );
 	}
 	public static function getType ( $arg )
 	{
@@ -34,3 +33,4 @@ class TypeUtils
 			return gettype($arg);
 	} 
 }
+?>

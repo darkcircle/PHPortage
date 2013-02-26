@@ -1,5 +1,4 @@
 <?php
-
 class String
 {
 	private $str;
@@ -72,7 +71,7 @@ class String
 			$b->setVal($new_str);
 			$this->str = $b->toString();
 		}
-		else if ( TypeUtils::isIntegerObject( $new_str) 
+		else if ( TypeUtils::isIntegerObject($new_str) 
 			|| TypeUtils::isStringObject($new_str) 
 			|| TypeUtils::isBooleanObject($new_str) )
 			$this->str = $new_str->toString();
@@ -243,3 +242,4 @@ class String
 		return $this->str;
 	}
 }
+?>
