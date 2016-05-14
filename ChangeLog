@@ -1,8 +1,73 @@
+commit 14d3d688eb6a74443f0539e5779df20b35048c44
+Author: Seong-ho Cho <darkcircle.0426@gmail.com>
+Date:   Sat May 14 11:41:30 2016 +0900
+
+    Fix description
+
+ config.inc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit a2c4220293b1649b3eed9cfedec89bb102a20a6a
+Author: Seong-ho Cho <darkcircle.0426@gmail.com>
+Date:   Sat May 14 11:41:19 2016 +0900
+
+    clean code
+
+ Element/PackageIdObject.php     | 28 ++++++++++++++--------------
+ External/PHPortageJSON.php      |  7 +++----
+ External/SearchAgent.php        |  2 +-
+ Internal/MaskedListObject.php   |  2 +-
+ Internal/PortageTreeFetcher.php |  6 +++---
+ 5 files changed, 22 insertions(+), 23 deletions(-)
+
+commit 4da787211cadb02bf72ff560a5ddeee91803ac1a
+Author: Seong-ho Cho <darkcircle.0426@gmail.com>
+Date:   Sat May 14 11:29:21 2016 +0900
+
+    add .gitignore
+
+ .gitignore | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit ccc7064cca5bffc3b074781930314ceb47787f05
+Author: Seong-ho Cho <darkcircle.0426@gmail.com>
+Date:   Sat May 14 11:28:56 2016 +0900
+
+    update help
+
+ README.md | 12 ++++++++++++
+ help.html | 14 +++++++-------
+ 2 files changed, 19 insertions(+), 7 deletions(-)
+
+commit b4beddcd7c9fe01337231dd6991e765d7716e42c
+Author: Seong-ho Cho <darkcircle.0426@gmail.com>
+Date:   Wed Feb 27 04:59:32 2013 +0900
+
+    fix ambiguous description
+
+ config.inc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit f23ba192fdfd353a034030e5072d92d75999dd2d
+Author: Seong-ho Cho <darkcircle.0426@gmail.com>
+Date:   Wed Feb 27 04:57:36 2013 +0900
+
+    update ChangeLogs
+
+ ChangeLog         | 204 +++++++++++-------------------------------------------
+ ChangeLog.svn.old | 181 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 223 insertions(+), 162 deletions(-)
+
 commit cb47065c210cf15b3954bb736d87ff22af7c4df0
 Author: Seong-ho Cho <darkcircle.0426@gmail.com>
 Date:   Wed Feb 27 04:56:00 2013 +0900
 
     remove eclipse project file
+
+ .project                                 | 22 ----------------------
+ .settings/org.eclipse.core.runtime.prefs |  2 --
+ .settings/org.eclipse.php.core.prefs     |  2 --
+ 3 files changed, 26 deletions(-)
 
 commit 7afc91736046e5ccea3cd473c531b8fb88701672
 Author: Seong-ho Cho <darkcircle.0426@gmail.com>
@@ -10,11 +75,17 @@ Date:   Wed Feb 27 04:54:56 2013 +0900
 
     remove unnecessary plan text
 
+ spec-utf8.txt | 21 ---------------------
+ 1 file changed, 21 deletions(-)
+
 commit a601670848a64928f89d779102bb0026e764fd00
 Author: Seong-ho Cho <darkcircle.0426@gmail.com>
 Date:   Wed Feb 27 04:47:19 2013 +0900
 
     fix a wrong variable reference
+
+ External/SearchAgent.php | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 commit e6ecf8dde3a64c35b2ef9e85da965261f36d4265
 Author: Seong-ho Cho <darkcircle.0426@gmail.com>
@@ -22,11 +93,17 @@ Date:   Wed Feb 27 04:45:37 2013 +0900
 
     change exception code throws when json module is not exist
 
+ External/PHPortageJSON.php | 21 +++++++++++----------
+ 1 file changed, 11 insertions(+), 10 deletions(-)
+
 commit 5173c54984c574417fee942032791e63cb68afe0
 Author: Seong-ho Cho <darkcircle.0426@gmail.com>
 Date:   Wed Feb 27 04:42:38 2013 +0900
 
     fix error message from DB
+
+ Internal/PortageTreeFetcher.php | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 commit ee28a93e70b639cd3490ad3efd990137eb63b996
 Author: Seong-ho Cho <darkcircle.0426@gmail.com>
@@ -34,11 +111,21 @@ Date:   Wed Feb 27 04:40:49 2013 +0900
 
     fix some bugs occured from common library
 
+ Common/Boolean.php   |  2 +-
+ Common/Common.inc    |  3 ++-
+ Common/Integer.php   | 38 ++++++++++++++++++++++++++++++++++----
+ Common/String.php    |  4 ++--
+ Common/TypeUtils.php | 16 ++++++++--------
+ 5 files changed, 47 insertions(+), 16 deletions(-)
+
 commit 9f95ab6f68b4f8d9b621ce3130d3022dd461f837
 Author: Seong-ho Cho <darkcircle.0426@gmail.com>
 Date:   Wed Feb 27 04:40:04 2013 +0900
 
     add ArrayList class into the common library
+
+ Common/ArrayList.php | 103 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 103 insertions(+)
 
 commit cc5e334c32840e8e407858e4742fa1cbecc2d8c1
 Author: Seong-ho Cho <darkcircle.0426@gmail.com>
@@ -46,11 +133,17 @@ Date:   Sat Aug 11 04:15:27 2012 +0900
 
     fix missing local database fullpath
 
+ cron.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 commit 624cbe8b76d33e32457c519f60edf10ceb808a2b
 Author: Seong-ho Cho <darkcircle.0426@gmail.com>
 Date:   Sat Aug 11 04:14:52 2012 +0900
 
     fixed NULL allocation problem
+
+ Element/VersionObject.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 commit 008ac336a08f8b7d21963ac233bf71c558c739c0
 Author: meow <meow@a581718b-f15c-4ffb-bfc4-ce304e3d5af9>
@@ -59,3 +152,55 @@ Date:   Mon Jul 23 06:54:21 2012 +0000
     repos is renamed to trunk
     
     git-svn-id: svn://darkcircle.myhome.tv/PHPortage/trunk@49 a581718b-f15c-4ffb-bfc4-ce304e3d5af9
+
+ .htaccess                                |   8 +
+ .project                                 |  22 ++
+ .settings/org.eclipse.core.runtime.prefs |   2 +
+ .settings/org.eclipse.php.core.prefs     |   2 +
+ ChangeLog                                | 181 ++++++++++++
+ Common/Boolean.php                       |  66 +++++
+ Common/Common.inc                        |   6 +
+ Common/Integer.php                       | 124 ++++++++
+ Common/String.php                        | 245 ++++++++++++++++
+ Common/TypeUtils.php                     |  36 +++
+ Element/ArchObject.php                   |  61 ++++
+ Element/EbuildObject.php                 |  73 +++++
+ Element/Element.inc                      |   8 +
+ Element/LicenseObject.php                |  59 ++++
+ Element/PackageIdObject.php              |  56 ++++
+ Element/PackageInfoObject.php            | 178 ++++++++++++
+ Element/VersionObject.php                | 371 ++++++++++++++++++++++++
+ Exception/ExceptionCollection.inc        |   9 +
+ Exception/FileNotFoundException.php      |  39 +++
+ Exception/InvalidKeyValException.php     |  46 +++
+ Exception/ModuleNotLoadedException.php   |  39 +++
+ Exception/SQLException.php               |  39 +++
+ Exception/TooManyArgumentException.php   |  41 +++
+ Exception/UnsupportedTypeException.php   |  45 +++
+ Exception/UnsupportedValueException.php  |  39 +++
+ External/ArchList.php                    |  61 ++++
+ External/DocType.php                     |   8 +
+ External/External.inc                    |   9 +
+ External/KeywordSimilarity.php           |   8 +
+ External/PHPortage.php                   | 235 +++++++++++++++
+ External/PHPortageJSON.php               |  30 ++
+ External/PHPortageXML.php                |  41 +++
+ External/SearchAgent.php                 | 466 ++++++++++++++++++++++++++++++
+ Include.inc                              |   8 +
+ Internal/Internal.inc                    |   6 +
+ Internal/MaskedListObject.php            | 155 ++++++++++
+ Internal/MaskedObject.php                | 133 +++++++++
+ Internal/PortageTreeFetcher.php          | 476 +++++++++++++++++++++++++++++++
+ Internal/VersionSpecifier.php            |  12 +
+ config.inc                               |   9 +
+ cron.php                                 |  12 +
+ help.html                                |  98 +++++++
+ image/php.gif                            | Bin 0 -> 2523 bytes
+ index.php                                |  65 +++++
+ js/field-completion.js                   | 122 ++++++++
+ phportage.json                           |  13 +
+ phportage.xml                            |  13 +
+ spec-utf8.txt                            |  21 ++
+ xml/phportage.xsd                        |  84 ++++++
+ xml/phportage.xsl                        |  64 +++++
+ 50 files changed, 3944 insertions(+)
