@@ -236,7 +236,7 @@ class SearchAgent
 			} 
 		}
 		
-		$result->setStr ( $doc->saveXML()."\n" );
+		$result->setStr($doc->saveXML()."\n");
 		
 		
 		return $result;

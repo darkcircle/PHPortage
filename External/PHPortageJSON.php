@@ -9,7 +9,7 @@ class PHPortageJSON extends PHPortage
 	public function generateStatusMessage( $e )
 	{
 		if ( !extension_loaded("json") )
-			throw new ModuleNotLoadedException ("json");
+			throw new ModuleNotLoadedException("json");
 		$result = new String();
 
 		$arr = array();
@@ -18,14 +18,13 @@ class PHPortageJSON extends PHPortage
 		$arr["cause"] = $e->getCause();
 		$arr["file"] = $e->getSourceFile();
 		$arr["line"] = $e->getLine();
-
+		
 		$r = array();
 		$r["result"] = $arr;
-
+		
 		$result->setStr(json_encode($r));
 
 		return $result;
 	}
 }
 ?>
-

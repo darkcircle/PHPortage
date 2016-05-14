@@ -47,7 +47,7 @@ class PackageIdObject
 	{
 		return $this->__toString(); // string
 	}
-	
+
 	public function __toString()
 	{
 		return $this->getFullPackageName()."-".$this->getVersion()->toString();
